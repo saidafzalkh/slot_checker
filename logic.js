@@ -5,7 +5,7 @@ const answers = document.getElementById("answers");
 let bank = 8325000;
 bank_screen.textContent = bank;
 
-let slots = Array.from(Array(37)).map((e, i) => ({
+let slots = Array.from(Array(37)).map((_, i) => ({
   number: i,
   price: 1000,
   loop: 1,
@@ -13,15 +13,20 @@ let slots = Array.from(Array(37)).map((e, i) => ({
 }));
 
 function handlePlay() {
+  let game_loop = 1;
+
   let winners = winners_input.value
     .trim()
     .split(" ")
     .map((e) => Number(e));
 
   winners.forEach((win) => {
+    game_loop++;
     slots.forEach((slot) => {
       if (slot.dead) return;
       if (win === slot.number) {
+        console.log(game_loop);
+        if (game_loop > 60) slot.dead = true;
         bank = bank + slot.price * 35;
         slot.loop = 0;
         slot.price = 1000;
