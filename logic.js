@@ -26,7 +26,7 @@ function handlePlay() {
       if (slot.dead) return;
       if (win === slot.number) {
         console.log(game_loop);
-        if (game_loop > 60) slot.dead = true;
+        if (game_loop > 45) slot.dead = true;
         bank = bank + slot.price * 35;
         slot.loop = 0;
         slot.price = 1000;
@@ -34,8 +34,7 @@ function handlePlay() {
         bank = bank - slot.price;
         if (slot.loop === 15) slot.price = slot.price * 2;
         else if (slot.loop === 30) slot.price = slot.price * 2;
-        else if (slot.loop === 45) slot.price = slot.price * 2;
-        else if (slot.loop === 60) slot.dead = true;
+        else if (slot.loop === 45) slot.dead = true;
       }
       slot.loop++;
     });
