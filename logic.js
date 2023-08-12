@@ -2,7 +2,7 @@ const bank_screen = document.getElementById("bank");
 const winners_input = document.getElementById("winners");
 const answers = document.getElementById("answers");
 
-let bank = 8325000;
+let bank = 3885000;
 bank_screen.textContent = bank;
 
 let slots = Array.from(Array(37)).map((_, i) => ({
